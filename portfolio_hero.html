@@ -1,0 +1,809 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To My Beautiful Love</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Georgia', serif;
+            line-height: 1.6;
+            color: #2c3e50;
+            overflow-x: hidden;
+            background: #fef9f3;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 50%, #fecfef 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .floating-hearts {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            pointer-events: none;
+        }
+
+        .heart {
+            position: absolute;
+            color: rgba(255, 255, 255, 0.3);
+            font-size: 20px;
+            animation: floatUp 8s infinite ease-in-out;
+        }
+
+        @keyframes floatUp {
+            0% {
+                transform: translateY(100vh) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            90% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-100px) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        .hero-content {
+            text-align: center;
+            color: #fff;
+            z-index: 2;
+            position: relative;
+            max-width: 900px;
+            padding: 0 20px;
+        }
+
+        .hero h1 {
+            font-size: 4.5rem;
+            font-weight: 300;
+            margin-bottom: 1rem;
+            opacity: 0;
+            animation: fadeInUp 1.5s ease-out 0.5s forwards;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .hero h1 span {
+            background: linear-gradient(45deg, #ff6b6b, #ffd93d);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-weight: 600;
+        }
+
+        .subtitle {
+            font-size: 1.8rem;
+            margin-bottom: 2rem;
+            opacity: 0;
+            animation: fadeInUp 1.5s ease-out 1s forwards;
+            font-style: italic;
+            color: #fff;
+        }
+
+        .hero-message {
+            font-size: 1.3rem;
+            margin-bottom: 3rem;
+            opacity: 0;
+            animation: fadeInUp 1.5s ease-out 1.5s forwards;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+            line-height: 1.8;
+        }
+
+        .scroll-indicator {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            opacity: 0;
+            animation: fadeInUp 1.5s ease-out 2s forwards;
+        }
+
+        .scroll-arrow {
+            width: 30px;
+            height: 30px;
+            border-right: 3px solid #fff;
+            border-bottom: 3px solid #fff;
+            transform: rotate(45deg);
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateY(0) rotate(45deg);
+            }
+            40% {
+                transform: translateY(-10px) rotate(45deg);
+            }
+            60% {
+                transform: translateY(-5px) rotate(45deg);
+            }
+        }
+
+        /* Navigation */
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(15px);
+            z-index: 1000;
+            transition: all 0.3s ease;
+            transform: translateY(-100%);
+            animation: slideDown 1s ease-out 0.5s forwards;
+        }
+
+        .nav-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem 2rem;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            background: linear-gradient(45deg, #ff9a9e, #fecfef);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #2c3e50;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            position: relative;
+            font-size: 1.1rem;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(45deg, #ff9a9e, #fecfef);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        /* Why I Love You Section */
+        .love-reasons {
+            padding: 120px 0;
+            background: #fff;
+            position: relative;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 3.5rem;
+            margin-bottom: 2rem;
+            color: #2c3e50;
+            position: relative;
+            font-weight: 300;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            font-size: 1.4rem;
+            margin-bottom: 4rem;
+            color: #7f8c8d;
+            font-style: italic;
+        }
+
+        .reasons-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 3rem;
+            margin-top: 4rem;
+        }
+
+        .reason-card {
+            background: #fff;
+            padding: 2.5rem;
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+            transition: all 0.4s ease;
+            border: 1px solid #f8f9fa;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .reason-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(45deg, #ff9a9e, #fecfef);
+        }
+
+        .reason-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+        }
+
+        .reason-icon {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+
+        .reason-card h3 {
+            color: #2c3e50;
+            margin-bottom: 1.5rem;
+            font-size: 1.5rem;
+            text-align: center;
+            font-weight: 600;
+        }
+
+        .reason-card p {
+            color: #555;
+            font-size: 1.1rem;
+            line-height: 1.8;
+            text-align: center;
+        }
+
+        /* Memories Section */
+        .memories {
+            padding: 120px 0;
+            background: linear-gradient(135deg, #ffeef8 0%, #f0f8ff 100%);
+        }
+
+        .memory-timeline {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 2rem 0;
+        }
+
+        .timeline-line {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 2px;
+            height: 100%;
+            background: linear-gradient(to bottom, #ff9a9e, #fecfef);
+        }
+
+        .memory-item {
+            position: relative;
+            margin: 3rem 0;
+            opacity: 0;
+            animation: fadeInUp 1s ease-out forwards;
+        }
+
+        .memory-item:nth-child(even) {
+            text-align: right;
+        }
+
+        .memory-item:nth-child(odd) {
+            text-align: left;
+        }
+
+        .memory-content {
+            background: #fff;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            position: relative;
+            max-width: 350px;
+            margin: 0 auto;
+        }
+
+        .memory-item:nth-child(even) .memory-content {
+            margin-left: 0;
+            margin-right: auto;
+        }
+
+        .memory-item:nth-child(odd) .memory-content {
+            margin-right: 0;
+            margin-left: auto;
+        }
+
+        .memory-date {
+            color: #ff9a9e;
+            font-weight: 600;
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+        }
+
+        .memory-text {
+            color: #2c3e50;
+            line-height: 1.6;
+            font-size: 1.1rem;
+        }
+
+        .memory-dot {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            width: 20px;
+            height: 20px;
+            background: #ff9a9e;
+            border-radius: 50%;
+            border: 4px solid #fff;
+            box-shadow: 0 0 0 4px #ff9a9e;
+        }
+
+        /* Promises Section */
+        .promises {
+            padding: 120px 0;
+            background: #fff;
+        }
+
+        .promise-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 4rem;
+        }
+
+        .promise-card {
+            background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 100%);
+            padding: 3rem 2rem;
+            border-radius: 20px;
+            text-align: center;
+            color: #fff;
+            position: relative;
+            overflow: hidden;
+            transition: transform 0.3s ease;
+        }
+
+        .promise-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+            animation: shimmer 3s ease-in-out infinite;
+        }
+
+        @keyframes shimmer {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .promise-card:hover {
+            transform: scale(1.05);
+        }
+
+        .promise-number {
+            font-size: 3rem;
+            font-weight: 300;
+            margin-bottom: 1rem;
+            opacity: 0.8;
+        }
+
+        .promise-text {
+            font-size: 1.2rem;
+            line-height: 1.6;
+            position: relative;
+            z-index: 2;
+        }
+
+        /* Footer */
+        .footer {
+            background: #2c3e50;
+            color: #fff;
+            padding: 60px 0;
+            text-align: center;
+        }
+
+        .footer-content {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .footer h3 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: #ff9a9e;
+        }
+
+        .footer p {
+            font-size: 1.2rem;
+            line-height: 1.8;
+            margin-bottom: 2rem;
+        }
+
+        .signature {
+            font-size: 1.5rem;
+            font-style: italic;
+            color: #fecfef;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes slideDown {
+            from {
+                transform: translateY(-100%);
+            }
+            to {
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .subtitle {
+                font-size: 1.3rem;
+            }
+            
+            .hero-message {
+                font-size: 1.1rem;
+            }
+            
+            .nav-links {
+                display: none;
+            }
+            
+            .section-title {
+                font-size: 2.5rem;
+            }
+            
+            .timeline-line {
+                left: 30px;
+            }
+            
+            .memory-item {
+                text-align: left !important;
+            }
+            
+            .memory-content {
+                margin-left: 60px !important;
+                margin-right: 0 !important;
+            }
+            
+            .memory-dot {
+                left: 30px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-content">
+            <div class="logo">💕 My Love</div>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#why">Why I Love You</a></li>
+                <li><a href="#memories">Our Memories</a></li>
+                <li><a href="#promises">My Promises</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="floating-hearts">
+            <div class="heart" style="left: 10%; animation-delay: 0s;">💕</div>
+            <div class="heart" style="left: 20%; animation-delay: 1s;">💖</div>
+            <div class="heart" style="left: 30%; animation-delay: 2s;">💗</div>
+            <div class="heart" style="left: 40%; animation-delay: 3s;">💕</div>
+            <div class="heart" style="left: 50%; animation-delay: 4s;">💖</div>
+            <div class="heart" style="left: 60%; animation-delay: 5s;">💗</div>
+            <div class="heart" style="left: 70%; animation-delay: 6s;">💕</div>
+            <div class="heart" style="left: 80%; animation-delay: 7s;">💖</div>
+            <div class="heart" style="left: 90%; animation-delay: 8s;">💗</div>
+        </div>
+        
+        <div class="hero-content">
+            <h1>To My <span>Beautiful</span> Love</h1>
+            <div class="subtitle">You are my sunshine, my heart, my everything</div>
+            <p class="hero-message">
+                Every day with you feels like a dream come true. Your smile lights up my world, 
+                your laughter is my favorite melody, and your love is my greatest treasure. 
+                This website is my love letter to you, expressing all the ways you make my life beautiful.
+            </p>
+        </div>
+        
+        <div class="scroll-indicator">
+            <div class="scroll-arrow"></div>
+        </div>
+    </section>
+
+    <!-- Why I Love You Section -->
+    <section class="love-reasons" id="why">
+        <div class="container">
+            <h2 class="section-title">Why I Love You</h2>
+            <p class="section-subtitle">Let me count the ways...</p>
+            
+            <div class="reasons-grid">
+                <div class="reason-card">
+                    <div class="reason-icon">✨</div>
+                    <h3>Your Beautiful Soul</h3>
+                    <p>Your kindness, compassion, and the way you see beauty in everything around you. You have the most beautiful soul I've ever encountered, and it shines through in everything you do.</p>
+                </div>
+                
+                <div class="reason-card">
+                    <div class="reason-icon">😊</div>
+                    <h3>Your Radiant Smile</h3>
+                    <p>Your smile has the power to brighten even my darkest days. It's infectious, genuine, and fills my heart with so much joy. I could spend forever making you smile.</p>
+                </div>
+                
+                <div class="reason-card">
+                    <div class="reason-icon">💝</div>
+                    <h3>Your Loving Heart</h3>
+                    <p>The way you love so deeply and completely. Your heart is pure gold, and I feel so blessed to be loved by someone as amazing as you. You make love feel like magic.</p>
+                </div>
+                
+                <div class="reason-card">
+                    <div class="reason-icon">🌟</div>
+                    <h3>Your Strength</h3>
+                    <p>You face challenges with such grace and determination. Your strength inspires me every day, and I admire how you never give up on your dreams and the people you love.</p>
+                </div>
+                
+                <div class="reason-card">
+                    <div class="reason-icon">🎭</div>
+                    <h3>Your Wonderful Personality</h3>
+                    <p>Your humor, intelligence, and the way you make every moment special. You're fun, caring, and absolutely perfect just the way you are. I love every side of you.</p>
+                </div>
+                
+                <div class="reason-card">
+                    <div class="reason-icon">💕</div>
+                    <h3>Simply Everything</h3>
+                    <p>From the way you laugh to the way you think, from your dreams to your quirks - I love absolutely everything about you. You are perfect in my eyes, always.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Memories Section -->
+    <section class="memories" id="memories">
+        <div class="container">
+            <h2 class="section-title">Our Beautiful Journey</h2>
+            <p class="section-subtitle">Every moment with you is a treasure</p>
+            
+            <div class="memory-timeline">
+                <div class="timeline-line"></div>
+                
+                <div class="memory-item">
+                    <div class="memory-dot"></div>
+                    <div class="memory-content">
+                        <div class="memory-date">The First Day</div>
+                        <div class="memory-text">
+                            The day I first met you, I knew my life would never be the same. You walked into my world and filled it with light and love.
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="memory-item">
+                    <div class="memory-dot"></div>
+                    <div class="memory-content">
+                        <div class="memory-date">First "I Love You"</div>
+                        <div class="memory-text">
+                            When we first said "I love you" to each other, time stood still. It was the most beautiful and honest moment of my life.
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="memory-item">
+                    <div class="memory-dot"></div>
+                    <div class="memory-content">
+                        <div class="memory-date">Our Adventures</div>
+                        <div class="memory-text">
+                            Every adventure we've shared, every place we've explored together - each memory is a precious gem in the treasure chest of our love.
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="memory-item">
+                    <div class="memory-dot"></div>
+                    <div class="memory-content">
+                        <div class="memory-date">Quiet Moments</div>
+                        <div class="memory-text">
+                            The simple, quiet moments we share - watching movies, talking for hours, or just being together in comfortable silence. These are my favorite.
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="memory-item">
+                    <div class="memory-dot"></div>
+                    <div class="memory-content">
+                        <div class="memory-date">Today & Always</div>
+                        <div class="memory-text">
+                            Every day with you is a new beautiful memory in the making. I can't wait to create countless more memories with you.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Promises Section -->
+    <section class="promises" id="promises">
+        <div class="container">
+            <h2 class="section-title">My Promises to You</h2>
+            <p class="section-subtitle">With all my heart, I promise...</p>
+            
+            <div class="promise-cards">
+                <div class="promise-card">
+                    <div class="promise-number">01</div>
+                    <div class="promise-text">
+                        I promise to love you unconditionally, through every season of life, and to choose you every single day.
+                    </div>
+                </div>
+                
+                <div class="promise-card">
+                    <div class="promise-number">02</div>
+                    <div class="promise-text">
+                        I promise to support your dreams, celebrate your successes, and be your comfort in difficult times.
+                    </div>
+                </div>
+                
+                <div class="promise-card">
+                    <div class="promise-number">03</div>
+                    <div class="promise-text">
+                        I promise to keep making you laugh, to surprise you with little gestures, and to never take your love for granted.
+                    </div>
+                </div>
+                
+                <div class="promise-card">
+                    <div class="promise-number">04</div>
+                    <div class="promise-text">
+                        I promise to grow with you, to face challenges together, and to build a beautiful future filled with love and happiness.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <h3>Forever Yours</h3>
+                <p>
+                    You are the love of my life, my best friend, and my soulmate. 
+                    Thank you for being you, for loving me, and for making every day feel like a fairy tale.
+                </p>
+                <div class="signature">
+                    All my love, always ❤️
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+        
+        // Navbar scroll effect
+        window.addEventListener('scroll', function() {
+            const navbar = document.querySelector('.navbar');
+            if (window.scrollY > 50) {
+                navbar.style.background = 'rgba(255, 255, 255, 0.98)';
+                navbar.style.boxShadow = '0 2px 20px rgba(0, 0, 0, 0.1)';
+            } else {
+                navbar.style.background = 'rgba(255, 255, 255, 0.95)';
+                navbar.style.boxShadow = 'none';
+            }
+        });
+        
+        // Animate cards on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+        
+        // Observe all cards and memory items
+        document.querySelectorAll('.reason-card, .memory-item, .promise-card').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(30px)';
+            el.style.transition = 'all 0.6s ease';
+            observer.observe(el);
+        });
+        
+        // Add staggered animation delays
+        document.querySelectorAll('.reason-card').forEach((card, index) => {
+            card.style.transitionDelay = `${index * 0.1}s`;
+        });
+        
+        document.querySelectorAll('.memory-item').forEach((item, index) => {
+            item.style.transitionDelay = `${index * 0.2}s`;
+        });
+        
+        document.querySelectorAll('.promise-card').forEach((card, index) => {
+            card.style.transitionDelay = `${index * 0.15}s`;
+        });
+        
+        // Create more floating hearts dynamically
+        function createFloatingHeart() {
+            const heartsContainer = document.querySelector('.floating-hearts');
+            const heart = document.createElement('div');
+            heart.className = 'heart';
+            heart.innerHTML = ['💕', '💖', '💗', '💝', '💘'][Math.floor(Math.random() * 5)];
+            heart.style.left = Math.random() * 100 + '%';
+            heart.style.animationDelay = Math.random() * 8 + 's';
+            heart.style.fontSize = (Math.random() * 10 + 15) + 'px';
+            heartsContainer.appendChild(heart);
+            
+            // Remove heart after animation
+            setTimeout(() => {
+                heart.remove();
+            }, 8000);
+        }
+        
+        // Create new hearts periodically
+        setInterval(createFloatingHeart, 2000);
+    </script>
+</body>
+</html>
